@@ -16,7 +16,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Título do aplicativo
-st.title('🌟  Mapeamento de Conceitos sobre Culinária e Meios de Subsistência dos Tupinambá de Olivença 🌟')
+st.title('Mapeamento de Conceitos sobre Culinária e Meios de Subsistência dos Tupinambá de Olivença')
 
 # Barra lateral para seleção de termo e outras opções
 st.sidebar.header('Opções de Exploração')
