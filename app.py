@@ -6,6 +6,15 @@ import plotly.express as px
 file_path = "Planilha.csv"
 df = pd.read_csv(file_path)
 
+# Adicionar estilo customizado para a largura da barra lateral
+st.markdown("""
+    <style>
+    .css-1d391kg {
+        width: 200px !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Título do aplicativo
 st.title('🌟 Exploração de Termos Culturais 🌟')
 
@@ -13,9 +22,8 @@ st.title('🌟 Exploração de Termos Culturais 🌟')
 st.sidebar.header('Opções de Exploração')
 selected_term = st.sidebar.selectbox('Selecione um Termo:', df['Conceito'].unique())
 
-# Tabela completa na barra lateral
-st.sidebar.write('### Tabela Completa')
-st.sidebar.dataframe(df)
+# Adicionar a imagem típica da cultura Tupinambá na parte inferior da barra lateral
+st.sidebar.image('https://imgs.search.brave.com/sBOhv8CMzJwXZJGc0hpuZZEjsgX_H7miZpxN5ADhyh0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMucHJlcGFyYWVu/ZW0uY29tLzIwMjIv/MDgvcG92b3MtaW5k/aWdlbmFzLWJyYXNp/bC5qcGc', use_column_width=True)
 
 # Seção principal
 st.header(f'🔍 Detalhes do Termo: {selected_term}')
@@ -35,10 +43,11 @@ if not filtered_df.empty:
                      labels={'Relação': 'Relações', 'Valor': 'Valores'},
                      title=f'Relações para o termo: {selected_term}')
         st.plotly_chart(fig)
-    else:
-        st.write("Os dados necessários para o gráfico não estão disponíveis.")
+    # A mensagem de dados não disponíveis foi removida
 
 else:
     st.write("Termo não encontrado.")
 
-# Rodar a aplicação com o comando: streamlit run nome_do_arquivo.py
+# Mostrar a tabela completa no final
+st.write('### Tabela Completa')
+st.dataframe(df)
